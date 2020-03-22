@@ -3,7 +3,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:expandable/expandable.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -14,14 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
 
-  Widget buildBottomSheet() {
-      return Container(
-          color: Colors.white,
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-            RadioListTile(dense: true, title: Text('Test'), groupValue: 'test', onChanged: (value) {}, value: true),
-            RadioListTile(dense: true, title: Text('Test'), groupValue: 'test', onChanged: (value) {}, value: true),
-          ]));
-    }
+
 
 
   @override
@@ -30,16 +22,22 @@ class _HomePageState extends State<HomePage> {
    
   return Scaffold(
 
-      bottomNavigationBar:  ExpandableNotifier( child: 
-      Column(mainAxisSize: MainAxisSize.min,
-        children: <Widget>[Expandable(expanded: buildBottomSheet(),),ExpandableButton(
-                child: SizedBox(height: 50,
-                  child: Center(
-                    child: Icon(Icons.edit),
-                  ),
-                ),
-              ),
-          FancyBottomNavigation(
+      bottomNavigationBar: /* BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text('Home'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.business),
+          title: Text('Business'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.school),
+          title: Text('School'),
+        ),
+     ],),*/
+         FancyBottomNavigation(
             
             tabs: [
             TabData(iconData: Icons.home, title: "Home",),
@@ -57,38 +55,35 @@ class _HomePageState extends State<HomePage> {
             circleColor: Colors.white,
 
           ),
-        ],
-      ),),
+          
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: Container(
+            width: 65,height: 65,
+            
+            child: FloatingActionButton(
+              
+              child: Icon(Icons.camera_enhance,size: 32,),
+              onPressed: null,splashColor: Colors.orange,
+              backgroundColor: Colors.orange,
+              
+  ),
+          ),   
+      
 
 //imagebackground
-      body: Column(
-        children: <Widget>[
+      body: 
           Column(children: <Widget>[
-            
-            Stack(children: <Widget>[
               Placeholder(fallbackHeight: MediaQuery.of(context).size.height * 0.75, fallbackWidth: MediaQuery.of(context).size.height ),
-              Positioned(left: 10,right: 10,
-                child: Container(
-              margin: EdgeInsets.only(top:20),
-              child: FittedBox(
-                child: Container(
-                  width: 65,
-                  height: 65,
-                  margin: const EdgeInsets.only(bottom: 32),
-                  child: RaisedButton(
-                  onPressed: () {
-                  // Add your onPressed code here!
-                  },
-        child: Icon(Icons.camera,size:30,),
-      //  backgroundColor: Colors.orange,
-        elevation: 3,
-        
-        ),
-      ),),),),],
+             Container(
+            color: Colors.green,
+            width: 100,//MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.16,
+          ),
+
                            
-            ),
             
-            Container(
+            
+           /* Container(
               width: 500,
               height: MediaQuery.of(context).size.height * 0.16,
               child: DecoratedBox(decoration: BoxDecoration(
@@ -97,34 +92,14 @@ class _HomePageState extends State<HomePage> {
                        
             ),
             
-              ),
+              ),*/
           ],
          ),
-        ],
-      )
-          ,
+      
+          
           
           backgroundColor: Colors.white,
-         // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: Container(
-            margin: EdgeInsets.only(top:100),
-            child: FittedBox(
-              child: Container(
-                width: 65,
-                height: 65,
-                margin: const EdgeInsets.only(bottom: 32),
-                child: FloatingActionButton(
-                onPressed: () {
-                // Add your onPressed code here!
-                },
-        child: Icon(Icons.camera,size:30,),
-        backgroundColor: Colors.orange,
-        elevation: 3,
-        
-        ),
-      ),
-    ),
-  ),      
+   
 );
         
       
